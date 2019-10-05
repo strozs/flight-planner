@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flight-planner", "flight-planner.csproj", "{599F94EF-5689-4F38-9130-DD4599404B19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flight-planner.data", "..\flight-planner.data\flight-planner.data.csproj", "{99CF1133-6C43-4101-AFA4-B93D077EE0E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flight-planner.core", "..\flight-planner.core1\flight-planner.core.csproj", "{5C506970-6264-4835-A6A1-87C5AA97F080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flight-planner.services", "..\flight-planner.services\flight-planner.services.csproj", "{BA38DE3C-32D8-4920-83CA-2A04A94694A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{599F94EF-5689-4F38-9130-DD4599404B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{599F94EF-5689-4F38-9130-DD4599404B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{599F94EF-5689-4F38-9130-DD4599404B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CF1133-6C43-4101-AFA4-B93D077EE0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CF1133-6C43-4101-AFA4-B93D077EE0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CF1133-6C43-4101-AFA4-B93D077EE0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CF1133-6C43-4101-AFA4-B93D077EE0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C506970-6264-4835-A6A1-87C5AA97F080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C506970-6264-4835-A6A1-87C5AA97F080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C506970-6264-4835-A6A1-87C5AA97F080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C506970-6264-4835-A6A1-87C5AA97F080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA38DE3C-32D8-4920-83CA-2A04A94694A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA38DE3C-32D8-4920-83CA-2A04A94694A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA38DE3C-32D8-4920-83CA-2A04A94694A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA38DE3C-32D8-4920-83CA-2A04A94694A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
