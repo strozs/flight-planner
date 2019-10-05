@@ -19,6 +19,7 @@ namespace flight_planner.Models
 
         public override bool Equals(object obj)
         {
+            //var result = false;
             var flight = obj as Flight;
             if (flight == null)
             {
