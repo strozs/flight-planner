@@ -8,8 +8,8 @@ namespace flight_planner.core.Models
     public class Flight
     {
         public int Id { get; set; }
-        public Airport From { get; set; }
-        public Airport To { get; set; }
+        public AirportRequest From { get; set; }
+        public AirportRequest To { get; set; }
 
         public string Carrier { get; set; }
 
@@ -19,6 +19,7 @@ namespace flight_planner.core.Models
 
         public override bool Equals(object obj)
         {
+            //var result = false;
             var flight = obj as Flight;
             if (flight == null)
             {

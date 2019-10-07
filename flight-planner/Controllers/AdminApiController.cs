@@ -1,7 +1,6 @@
 ﻿using flight_planner.Atribute;
 using flight_planner.core.Models;
 using flight_planner.Models;
-using flight_planner.services;
 using javax.naming.directory;
 using System;
 using System.Collections.Generic;
@@ -16,14 +15,13 @@ namespace flight_planner.Controllers
     [BasicAuthentication]
     public class AdminApiController : ApiController
     {
-        private readonly FlightService _flightServices;
+        private Random _random;
+
 
         public AdminApiController()
         {
-            _flightServices = new FlightService();
+            _random = new Random();
         }
-
-
         // GET: api/AdminApi
         public IEnumerable<string> Get()
         {
@@ -48,87 +46,57 @@ namespace flight_planner.Controllers
         public void Post([FromBody]string value)
         {
         }
-
-        // PUT: api/AdminApi/5
         [HttpPut]
         [Route("admin-api/flights")]
+        // PUT: api/AdminApi/5
         public async Task<HttpResponseMessage> AddFlight(HttpRequestMessage request, Flight flight)
         {
-            /*if (!IsValid(flight))
+
+            if (!IsValid(flight))
             {
                 return request.CreateResponse(HttpStatusCode.BadRequest, flight);
-                *//*flight.Id = FlightStorage.GetId();
-
-                if (!FlightStorage.AddFlight(flight))
-                {
-                    return request.CreateResponse(HttpStatusCode.Conflict, flight);
-                }
-
-                return request.CreateResponse(HttpStatusCode.Created, flight);*//*
-            }*/
-            var domainFlight = new Flight
-            {
-                From = new Airport
-                {
-                    AirportCode = flight.From.Airport1,
-                    City = flight.From.City,
-                    Country = flight.From.Country
-                },
-                To = new Airport
-                {
-                    AirportCode = flight.To.Airport1,
-                    City = flight.To.City,
-                    Country = flight.To.Country
-                },
-                ArrivalTime = flight.ArrivalTime,
-                Id = flight.Id,
-                DepartureTime = flight.DepartureTime,
-                Carrier = flight.Carrier
-            };
-
-            domainFlight = await _flightServices.AddFlight(domainFlight);
-
-            //flight = await _flightServices.AddFlight(flight);
-
-            return request.CreateResponse(HttpStatusCode.Created, flight);
-            /*else
-            {
-                return request.CreateResponse(HttpStatusCode.BadRequest,flight);
-            }*/
-            
-        }
-
-        [HttpGet]
-        [Route("admin-api/get/flights")]
-        public async Task<ICollection<Flight>> GetFlights()
-        {
-            return await _flightServices.GetFlights();
-        }
-
-
-        private bool IsValid (Flight flight)
-        {
-            var result = false;
-            if (!string.IsNullOrEmpty(flight.ArrivalTime) && 
-                !string.IsNullOrEmpty(flight.DepartureTime) && 
-                !string.IsNullOrEmpty(flight.Carrier) &&
-                IsValidAirport(flight.From) && IsValidAirport(flight.To) && flight.From.AirportCode.ToLower().Trim() != flight.To.AirportCode.ToLower().Trim())
-                
-            {
-                result = true;
             }
 
-            return result;
+
+            flight.Id = FlightStorage.GetId();
+
+
+
+            if (!FlightStorage.AddFlight(flight))
+            {
+                return request.CreateResponse(HttpStatusCode.Conflict, flight);
+            }
+
+            return request.CreateResponse(HttpStatusCode.Created, flight);
         }
 
-        private bool IsValidAirport (Airport airport)
+        private static bool IsValid(Flight flight)
         {
-            return airport != null && !string.IsNullOrEmpty(airport.AirportCode) &&
-                !string.IsNullOrEmpty(airport.City) &&
-                !string.IsNullOrEmpty(airport.Country);
+
+            return !string.IsNullOrEmpty(flight.ArrivalTime) &&
+                   !string.IsNullOrEmpty(flight.DepartureTime) &&
+                   !string.IsNullOrEmpty(flight.Carrier) &&
+                   IsValidAirport(flight.From) && IsValidAirport(flight.To) &&
+                   ValidateDates(flight.DepartureTime, flight.ArrivalTime) &&
+                   IsDifferentAirport(flight.From, flight.To);
         }
 
-        private bool ValidateDates(string departure, string arrival)
+
+        private static bool IsValidAirport(AirportRequest airport)
+        {
+            return airport != null &&
+                   !string.IsNullOrEmpty(airport.Airport) &&
+                   !string.IsNullOrEmpty(airport.City) &&
+                   !string.IsNullOrEmpty(airport.Country);
+        }
+
+        private static bool IsDifferentAirport(AirportRequest airportFrom, AirportRequest airtportTo)
+        {
+            return !airportFrom.Airport.ToLower().Equals(airtportTo.Airport.ToLower()) &&
+                   !airportFrom.City.ToLower().Equals(airtportTo.City.ToLower());
+        }
+
+        private static bool ValidateDates(string departure, string arrival)
         {
             if (!string.IsNullOrEmpty(departure) && !string.IsNullOrEmpty(arrival))
             {
@@ -140,11 +108,12 @@ namespace flight_planner.Controllers
             return false;
         }
 
-        // DELETE
         [HttpDelete]
         [Route("admin-api/flights/{id}")]
+        // DELETE: api/AdminApi/5
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, int id)
         {
+
             FlightStorage.RemoveFlightById(id);
             return request.CreateResponse(HttpStatusCode.OK);
         }

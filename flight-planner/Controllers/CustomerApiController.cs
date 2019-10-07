@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using flight_planner.Models;
+using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using flight_planner.Models;
-using WebGrease.Css.Extensions;
 
 namespace flight_planner.Controllers
 {
     public class CustomerApiController : ApiController
     {
-/*
         [HttpGet]
         [Route("api/FlightSearchRequest/{id}")]
         public async Task<HttpResponseMessage> Get(HttpRequestMessage request, int id)
@@ -28,11 +26,11 @@ namespace flight_planner.Controllers
         }
 
 
-        // GET: api/CustomerApiController
+        /*// GET: api/CustomerApiController
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }
+        }*/
 
         // GET: api/CustomerApiController/5
         [HttpGet]
@@ -50,7 +48,7 @@ namespace flight_planner.Controllers
             return result.Where(a => a.Airport.ToLower().Contains(search.ToLower().Trim()) ||
                             a.City.ToLower().Contains(search.ToLower().Trim()) ||
                             a.Country.ToLower().Contains(search.ToLower().Trim()))
-                .ToArray();
+                            .ToArray();
         }
 
 
@@ -100,15 +98,5 @@ namespace flight_planner.Controllers
             }
             return request.CreateResponse(HttpStatusCode.OK, flight);
         }
-
-        // PUT: api/CustomerApiController/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/CustomerApiController/5
-        public void Delete(int id)
-        {
-        }*/
     }
 }
