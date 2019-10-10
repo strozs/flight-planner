@@ -12,7 +12,7 @@ namespace flight_planner.core.Models
         public string City { get; set; }
         public string AirportCode { get; set; }
 
-        public string Airport1 { get; set; }
+        //public string Airport1 { get; set; }
 
         public override bool Equals(object obj)
         {

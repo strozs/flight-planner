@@ -42,7 +42,7 @@ namespace flight_planner.services
         {
             using (var context = new FlightPlannerDbContext())
             {
-                return await context._flights(f => f.id == id);
+                return await context.Flights(f => f.id == id);
             }
         }*/
 

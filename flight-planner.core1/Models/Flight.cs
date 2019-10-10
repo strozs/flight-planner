@@ -26,8 +26,11 @@ namespace flight_planner.core.Models
             {
                 return false;
             }
-            return flight.Carrier == Carrier && flight.ArrivalTime == ArrivalTime && flight.DepartureTime == DepartureTime
-                                          && flight.From.Equals(From) && flight.To.Equals(To);
+            return flight.Carrier == Carrier &&
+                   flight.ArrivalTime == ArrivalTime &&
+                   flight.DepartureTime == DepartureTime &&
+                   flight.From.Equals(From) &&
+                   flight.To.Equals(To);
         }
     }
 }

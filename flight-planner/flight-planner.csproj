@@ -255,7 +255,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FlightRequest.cs" />
-    <Compile Include="Models\FlightSearchRequest.cs" />
     <Compile Include="Models\FlightSearchResult.cs" />
     <Compile Include="Models\FlightStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

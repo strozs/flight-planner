@@ -44,6 +44,7 @@
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\AirportRequest.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\FlightSearchRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
