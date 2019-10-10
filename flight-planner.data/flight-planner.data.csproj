@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlightPlannerDbContext.cs" />
+    <Compile Include="IFlightPlannerDbContext.cs" />
     <Compile Include="Migrations\201909301747023_Init.cs" />
     <Compile Include="Migrations\201909301747023_Init.Designer.cs">
       <DependentUpon>201909301747023_Init.cs</DependentUpon>

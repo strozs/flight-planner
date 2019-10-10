@@ -1,4 +1,5 @@
-﻿using flight_planner.Models;
+﻿using flight_planner.core1.Models;
+using flight_planner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,8 @@ using System.Web;
 
 namespace flight_planner.core.Models
 {
-    public class Flight
+    public class Flight : Entity
     {
-        public int Id { get; set; }
         public AirportRequest From { get; set; }
         public AirportRequest To { get; set; }
 

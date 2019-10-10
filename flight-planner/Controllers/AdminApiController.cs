@@ -1,5 +1,6 @@
 ﻿using flight_planner.Atribute;
 using flight_planner.core.Models;
+using flight_planner.core1.Services;
 using flight_planner.Models;
 using javax.naming.directory;
 using System;
@@ -15,6 +16,8 @@ namespace flight_planner.Controllers
     [BasicAuthentication]
     public class AdminApiController : ApiController
     {
+        public AdminApiController(IFlightService flightService) { }
+
         private Random _random;
 
 
@@ -23,10 +26,10 @@ namespace flight_planner.Controllers
             _random = new Random();
         }
         // GET: api/AdminApi
-        public IEnumerable<string> Get()
+        /*public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }
+        }*/
 
         // GET: api/AdminApi/5
         [HttpGet]
